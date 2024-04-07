@@ -8,12 +8,35 @@ routes = routes_without_duplicates
 # Dublin bus data
 url = "https://gtfs.pro/en/ireland/transport-for-ireland/google-transit-combined/routes?type=Bus"
 
-response = requests.get(url)
+def extract_bus_routes_links(url):
+    try:
 
-hrefs = []
+        response = requests.get(url)
 
-if response.status_code == 200:
-    soup = BeautifulSoup(response.content, 'html.parser')
-    links = soup.find_all('a', href=True)
+        if response.status_code == 200:
+            soup = BeautifulSoup(response.content, 'html.parser')
 
-print(links)
+            links = soup.find_all('a', class_='row-details-block')
+
+            routes_links=[]
+            for link in links:
+                href = link.get('href')
+                routes_links.append('https://gtfs.pro/'+href)
+            return routes_links
+
+    except requests.exceptions.RequestException as e:
+      print("Failed to retrieve data from the URL:", e)
+      return None
+    
+URL = "https://gtfs.pro/en/ireland/transport-for-ireland/google-transit-combined/routes?type=Bus"
+bus_routes_links_array = extract_bus_routes_links(URL)
+
+print('==========================Testing Routes=============================')
+print('\n')
+print('\n')
+print('\n')
+print('\n')
+print('\n')
+print('\n')
+
+print(bus_routes_links_array)
