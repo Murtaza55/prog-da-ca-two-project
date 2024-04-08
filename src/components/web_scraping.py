@@ -86,5 +86,34 @@ for bus_stop in bus_stops:
     modified_bus_stop = '-'.join(bus_stop).replace(' ', '-')
     modified_bus_stops.append(modified_bus_stop)
 
-# Print the modified bus stops
-print(modified_bus_stops)
+array = modified_bus_stops
+links_array = []
+url_template = "https://gtfs.pro/en/ireland/transport-for-ireland/google-transit-combined/stops?page={}"
+
+
+with open('links.txt', 'w') as f:
+    for page_num in range(1, 15):
+        url = url_template.format(page_num)
+        response = requests.get(url)
+
+        if response.status_code == 200:
+            html_content = response.text
+            soup = BeautifulSoup(html_content, "html.parser")
+
+            links = soup.find_all("a")
+
+            printed_links = set()
+
+            for link in links:
+                href = link.get("href")
+                if href:
+                    if any(name in href for name in array):
+                        if href not in printed_links:
+                            full_href = "https://gtfs.pro/" + href
+                            f.write(full_href + '\n')
+                            printed_links.add(href)
+                            links_array.append(full_href)
+        else:
+            print("Failed to fetch the HTML content for page", page_num, ". Status code:", response.status_code)
+
+print("Links stored in array:", links_array)
