@@ -28,10 +28,54 @@ def extract_bus_routes_links(url):
       print("Failed to retrieve data from the URL:", e)
       return None
     
+def extract_bus_stops(url):
+    try:
+        response = requests.get(url)
+
+        response.raise_for_status()
+
+        # Parse the HTML content
+        soup = BeautifulSoup(response.text, 'html.parser')
+
+        stop_elements = soup.find_all('th', class_='stop-name')
+
+        stop_title = soup.find_all('h1', class_='title-page no-ellipsis')
+
+
+        bus_stops = [stop.text.strip() for stop in stop_elements]
+
+        return bus_stops
+    except requests.exceptions.RequestException as e:
+        print("Failed to retrieve data from the URL:", e)
+        return None
+
+def extract_route_title(url):
+    try:
+        response = requests.get(url)
+
+        response.raise_for_status()
+
+        soup = BeautifulSoup(response.text, 'html.parser')
+
+        title_element = soup.find('h1', class_='title-page')
+
+        route_title = title_element.text.strip() if title_element else None
+
+        return route_title
+    except requests.exceptions.RequestException as e:
+        print("Failed to retrieve data from the URL:", e)
+        return None
+    
 URL = "https://gtfs.pro/en/ireland/transport-for-ireland/google-transit-combined/routes?type=Bus"
 bus_routes_links_array = extract_bus_routes_links(URL)
 
-print('==========================Testing Routes=============================')
+buss_stops_arr=[]
+for link in bus_routes_links_array:
+  bus_stops = extract_bus_stops(link)
+  if(bus_stops):
+    print(bus_stops)
+
+print('==========================Testing Bus stops=============================')
 print('\n')
 print('\n')
 print('\n')
@@ -39,4 +83,4 @@ print('\n')
 print('\n')
 print('\n')
 
-print(bus_routes_links_array)
+# print(buss_stops_arr)
