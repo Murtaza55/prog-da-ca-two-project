@@ -12,3 +12,5 @@
 
 # Web Scraping
 Working on web scraping to get the Data for Dublin Bus
+
+Not satisfied with the dublin bus dataset, not enough features to work on, looking for another data now.
