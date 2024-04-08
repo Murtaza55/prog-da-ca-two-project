@@ -116,4 +116,30 @@ with open('links.txt', 'w') as f:
         else:
             print("Failed to fetch the HTML content for page", page_num, ". Status code:", response.status_code)
 
-print("Links stored in array:", links_array)
+import re
+url = links_array
+response = requests.get(url)
+
+if response.status_code == 200:
+    html_content = response.text
+    soup = BeautifulSoup(html_content, 'html.parser')
+
+    title_tag = soup.find('title')
+    if title_tag:
+        bus_stop_name = title_tag.text.strip().split("(")[0].strip()
+        print("Bus Stop:", bus_stop_name)
+    else:
+        print("Bus Stop name not found in HTML.")
+
+    # Finding the anchor tag with href containing the Google Maps URL
+    anchor_tag = soup.find('a', href=lambda href: href and "google.com/maps" in href)
+    if anchor_tag:
+        # Extracting latitude and longitude from the href attribute
+        href = anchor_tag['href']
+        latitude, longitude = re.search(r'cbll=(-?\d+\.\d+),(-?\d+\.\d+)', href).groups()
+        print("Latitude:", latitude)
+        print("Longitude:", longitude)
+    else:
+        print("Google Maps URL not found in HTML.")
+else:
+    print("Failed to fetch HTML content. Status code:", response.status_code)
