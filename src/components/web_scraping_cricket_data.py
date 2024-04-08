@@ -32,7 +32,7 @@ if response.status_code == 200:
         innings = int(columns[3].text.strip())
         not_outs = int(columns[4].text.strip())
         runs = int(columns[5].text.strip())
-        highest_score = int(columns[6].text.strip())
+        highest_score = columns[6].text.strip()
         average = float(columns[7].text.strip())
         bf = columns[8].text.strip()
         sr = columns[9].text.strip()
