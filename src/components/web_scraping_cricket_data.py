@@ -13,9 +13,7 @@ if response.status_code == 200:
 
     if table:
         print("Table found!")
-
-        #printing the entire table html to see the header element of table
-        print(table)
+        
     else:
         print("Table not found!")
 
@@ -23,7 +21,9 @@ if response.status_code == 200:
         
     rows = table.find_all("tr")
 
-    header_row = rows[0].find_all("th")
+    #selecting the whole class of the element to get the header row
+    header_row = table.find("thead", class_="ds-bg-fill-content-alternate ds-text-left")
+    print("Header row:", header_row)
     if header_row:
         column_names = [th.text.strip() for th in header_row]
         print("Column Names:", column_names)
