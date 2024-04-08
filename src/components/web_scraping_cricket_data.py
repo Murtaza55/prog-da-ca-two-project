@@ -20,6 +20,10 @@ if response.status_code == 200:
         
     rows = table.find_all("tr")
 
+    header_row = rows[0].find_all("th")
+    column_names = [th.text.strip() for th in header_row]
+    print("Column Names:", column_names)
+
     for row in rows[1:]:
         columns = row.find_all("td")
         player_name = columns[0].text.strip()
@@ -56,4 +60,4 @@ if response.status_code == 200:
             "6s": sixes
         })
 
-    print(data)
+    # print(data)
