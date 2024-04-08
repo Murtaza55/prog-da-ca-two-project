@@ -24,6 +24,7 @@ if response.status_code == 200:
     if header_row:
         column_names = [th.text.strip() for th in header_row]
         print("Column Names:", column_names)
+        
     else:
         print("Header row not found!")
 
