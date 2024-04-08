@@ -48,6 +48,9 @@ if response.status_code == 200:
     for row in rows:
         row_data = [td.text.strip() for td in row.find_all("td")]
 
+        # Creating a dictionary mapping column names to row values
+        row_dict = dict(zip(column_names, row_data))
+
     for row in rows[1:]:
         columns = row.find_all("td")
         player_name = columns[0].text.strip()
