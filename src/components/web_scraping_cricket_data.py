@@ -13,6 +13,9 @@ if response.status_code == 200:
 
     if table:
         print("Table found!")
+
+        #printing the entire table html to see the header element of table
+        print(table)
     else:
         print("Table not found!")
 
