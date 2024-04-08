@@ -72,15 +72,19 @@ bus_routes_links_array = extract_bus_routes_links(URL)
 buss_stops_arr=[]
 for link in bus_routes_links_array:
   bus_stops = extract_bus_stops(link)
-  if(bus_stops):
-    print(bus_stops)
 
-print('==========================Testing Bus stops=============================')
-print('\n')
-print('\n')
-print('\n')
-print('\n')
-print('\n')
-print('\n')
+import csv
 
-# print(buss_stops_arr)
+# Read the data from the CSV file
+with open('unique_bus_stops.csv', 'r') as file:
+    reader = csv.reader(file)
+    bus_stops = list(reader)
+
+# Modify the bus stop names
+modified_bus_stops = []
+for bus_stop in bus_stops:
+    modified_bus_stop = '-'.join(bus_stop).replace(' ', '-')
+    modified_bus_stops.append(modified_bus_stop)
+
+# Print the modified bus stops
+print(modified_bus_stops)
