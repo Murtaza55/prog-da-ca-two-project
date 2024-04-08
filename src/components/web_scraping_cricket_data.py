@@ -22,7 +22,7 @@ if response.status_code == 200:
 
     for row in rows[1:]:
         columns = row.find_all("td")
-        player_name = str(columns[0].text.strip())
+        player_name = columns[0].text.strip()
         span = columns[1].text.strip()
         matches = int(columns[2].text.strip())
         innings = int(columns[3].text.strip())
@@ -30,8 +30,8 @@ if response.status_code == 200:
         runs = int(columns[5].text.strip())
         highest_score = int(columns[6].text.strip())
         average = float(columns[7].text.strip())
-        bf = int(columns[8].text.strip())
-        sr = int(columns[9].text.strip())
+        bf = columns[8].text.strip()
+        sr = columns[9].text.strip()
         centuries = int(columns[10].text.strip())
         fifties = int(columns[11].text.strip())
         zeros = int(columns[12].text.strip())
