@@ -19,7 +19,7 @@ if response.status_code == 200:
 
     data = []
         
-    rows = table.find_all("tr")
+    # rows = table.find_all("tr")
 
      # Find the header rows to extract column names
     header_rows = table.find("thead").find_all("tr")
@@ -31,7 +31,7 @@ if response.status_code == 200:
             spans = div.find_all("span")
             for span in spans:
                 column_names.append(span.text.strip())
-    print("Column Names:", column_names)
+    # print("Column Names:", column_names)
 
     #selecting the whole class of the element to get the header row
     # header_row = table.find("thead", class_="ds-bg-fill-content-alternate ds-text-left")
@@ -42,6 +42,11 @@ if response.status_code == 200:
         
     # else:
     #     print("Header row not found!")
+
+    rows = table.find("tbody").find_all("tr")
+
+    for row in rows:
+        row_data = [td.text.strip() for td in row.find_all("td")]
 
     for row in rows[1:]:
         columns = row.find_all("td")
