@@ -1,3 +1,4 @@
+import csv
 import requests
 from bs4 import BeautifulSoup
 
@@ -41,3 +42,13 @@ if response.status_code == 200:
 
         # Appending the data to the list
         data.append(row_dict)
+
+    # saving the data in a csv file
+    csv_file_path = "cricket_test_matches_records_data.csv"
+    
+    with open(csv_file_path, "w") as csv_file:
+        writer = csv.DictWriter(csv_file, fieldnames=column_names)
+        writer.writeheader()
+        writer.writerows(data)
+    
+    print("Data saved to", csv_file_path)
