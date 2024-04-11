@@ -11,3 +11,6 @@ df = df.rename(columns={'Mat': 'Matches', 'NO': 'Not_Outs', 'HS': 'Highest_Score
 
 #finding null data if any
 print(df.isnull().any())
+
+#Getting true for Balls_Faced and Strike rate, checking rows that have null values in those columns
+print(df[df['Balls_Faced'].isna()==1])
