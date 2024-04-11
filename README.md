@@ -19,4 +19,8 @@
 - Created a dictionary mapping column names to row values.
 - Finally, appending all the data to the list.
 - Lastly, saving the scraped data to the csv file using csv module and csv.DictWriter class from python3.
+
+## Data Cleaning
+
+- Starting to Work on cleaning the Cricket Data.
  
