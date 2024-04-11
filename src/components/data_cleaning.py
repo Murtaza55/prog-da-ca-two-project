@@ -17,5 +17,6 @@ df = df.rename(columns={'Mat': 'Matches', 'NO': 'Not_Outs', 'HS': 'Highest_Score
 
 #replacing Na value with 0
 df['Balls_Faced'] = df['Balls_Faced'].fillna(0)
+df['Strike_Rate'] = df['Strike_Rate'].fillna(0)
 
-print(df[df['Player'] == 'ED Weekes (WI)'])
+print(df[df['Player'] == 'CL Walcott (WI)'])
