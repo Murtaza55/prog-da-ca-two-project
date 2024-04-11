@@ -33,7 +33,18 @@ df['Strike_Rate'] = df['Strike_Rate'].fillna(0)
 df = df.drop_duplicates()
 
 #now getting false for all
-print(df.duplicated())
+# print(df.duplicated())
 
 #now getting empty index, no more duplicates
-print(df[df['Player'].duplicated() == 1])
+# print(df[df['Player'].duplicated() == 1])
+
+#splitting span column to Start Date and End Date
+splitted_col = df['Span'].str.split(pat = '-')
+
+# print(splitted_col)
+
+# creating columns Start_Year and End_Year to
+df['Start_Year'] = df['Span'].str.split(pat = '-').str[0]
+df['Final_Year'] = df['Span'].str.split(pat = '-').str[1]
+
+print(df.head())
