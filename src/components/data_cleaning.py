@@ -47,4 +47,6 @@ splitted_col = df['Span'].str.split(pat = '-')
 df['Start_Year'] = df['Span'].str.split(pat = '-').str[0]
 df['Final_Year'] = df['Span'].str.split(pat = '-').str[1]
 
+df = df.drop(['Span'], axis=1)
+
 print(df.head())
