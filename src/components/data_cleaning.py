@@ -49,4 +49,22 @@ df['Final_Year'] = df['Span'].str.split(pat = '-').str[1]
 
 df = df.drop(['Span'], axis=1)
 
+#splitting the player name and country from player column
+# country_with_player = df['Player'].str.split(pat = ')').str[0]
+
+# country_without_player = df['Player'].str.split(pat = '(').str[1]
+
+#removing the circle bracket at the end
+df['Country'] = df['Player'].str.split(pat = '(').str[1]
+
+#saving only the country in a seperate columns
+df['Country'] = df['Country'].str.split(pat = ')').str[0]
+
+# print(df['Country'])
+
+#Separating player name from country code
+df['Player'] = df['Player'].str.split(pat = '(').str[0]
+
+# print(df['Player'])
+
 print(df.head())
