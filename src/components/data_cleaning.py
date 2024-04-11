@@ -24,7 +24,16 @@ df['Strike_Rate'] = df['Strike_Rate'].fillna(0)
 #Now finding duplicates
 
 #returns true for some rows
-print(df.duplicated())
+# print(df.duplicated())
 
 #finding which rows are duplicated, returns 6 rows
+# print(df[df['Player'].duplicated() == 1])
+
+#dropping duplicates
+df = df.drop_duplicates()
+
+#now getting false for all
+print(df.duplicated())
+
+#now getting empty index, no more duplicates
 print(df[df['Player'].duplicated() == 1])
