@@ -138,9 +138,20 @@ testing = df.groupby('Country')['Highest_Score'].max().to_frame('High Scorer')
 top_10_highest_scores = df.nlargest(10, 'Highest_Score')
 
 # Returns with only two mentioned columns
-top_10_highest_scores = df.nlargest(10, 'Highest_Score')[['Player', 'Highest_Score']]
+# top_10_highest_scores = df.nlargest(10, 'Highest_Score')[['Player', 'Highest_Score']]
+top_10_highest_scores = df.nlargest(10, 'Highest_Score')[['Player', 'Highest_Score']].reset_index(drop=True)
 
-#print(top_10_highest_scores)
+#adding 1 to index so it starts from 1 and not 0
+top_10_highest_scores.index += 1
 
+#Top 10 players with the highest strike rate in an innings in tests
+top_10_players_highest_strike_rate = df.nlargest(10, 'Strike_Rate')[['Player', 'Strike_Rate']].reset_index(drop=True)
+top_10_players_highest_strike_rate.index += 1
+
+#Top 10 players with the batting average rate in an innings in tests
+top_10_players_highest_batting_avg = df.nlargest(10, 'Batting_Average')[['Player', 'Batting_Average']].reset_index(drop=True)
+top_10_players_highest_batting_avg.index += 1
+
+print(top_10_players_highest_batting_avg)
 
 # print(df.head())
