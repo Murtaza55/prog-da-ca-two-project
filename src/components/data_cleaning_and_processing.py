@@ -1,4 +1,5 @@
 import pandas as pd
+import csv
 
 df = pd.read_csv('cricket_test_matches_records_data.csv')
 
@@ -102,6 +103,11 @@ df = df.astype({'4s':'int', '6s':'int','Start_Year':'int', 'Final_Year':'int'})
 
 # print(df.dtypes)
 
+ # saving the cleaned data in a csv file
+df.to_csv('cleaned_test_records_data.csv', index=False)
+
+print("Data saved to", 'cleaned_test_records_data.csv')
+
 #====Calculating each players career length and add it as a new column=====
 df['Career_Length'] = df['Final_Year'] - df['Start_Year']
 
@@ -134,7 +140,7 @@ top_10_highest_scores = df.nlargest(10, 'Highest_Score')
 # Returns with only two mentioned columns
 top_10_highest_scores = df.nlargest(10, 'Highest_Score')[['Player', 'Highest_Score']]
 
-print(top_10_highest_scores)
+#print(top_10_highest_scores)
 
 
 # print(df.head())
