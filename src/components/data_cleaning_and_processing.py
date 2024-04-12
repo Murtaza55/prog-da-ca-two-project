@@ -107,4 +107,34 @@ df['Career_Length'] = df['Final_Year'] - df['Start_Year']
 
 # print(df['Career_Length'])
 
+#====Calculations with the dataframe after adding new columns=====
+
+#Average career length of players
+
+df['Career_Length'].mean()
+
+#Average batting strike rate for players who played more than 10 years
+
+df[df['Career_Length'] > 10]['Strike_Rate'].mean()
+
+#Players who played before 2000
+df[df['Start_Year'] < 2000]['Player'].count()
+
+#Players who played after 2000
+df[df['Start_Year'] > 2000]['Player'].count()
+
+#Players with the highest score group by country in test innings
+testing = df.groupby('Country')['Highest_Score'].max().to_frame('High Scorer')
+
+#Top 10 players with the highest score in an innings in tests
+
+# Returns with all columns
+top_10_highest_scores = df.nlargest(10, 'Highest_Score')
+
+# Returns with only two mentioned columns
+top_10_highest_scores = df.nlargest(10, 'Highest_Score')[['Player', 'Highest_Score']]
+
+print(top_10_highest_scores)
+
+
 # print(df.head())
