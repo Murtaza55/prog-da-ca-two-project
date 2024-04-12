@@ -100,8 +100,11 @@ df['Balls_Faced'] = df['Balls_Faced'].astype(int)
 #changing multiple datatypes at once
 df = df.astype({'4s':'int', '6s':'int','Start_Year':'int', 'Final_Year':'int'})
 
-print(df.dtypes)
+# print(df.dtypes)
 
-# print(testing)
+#====Calculating each players career length and add it as a new column=====
+df['Career_Length'] = df['Final_Year'] - df['Start_Year']
 
-# print(df.head())
+# print(df['Career_Length'])
+
+print(df.head())
