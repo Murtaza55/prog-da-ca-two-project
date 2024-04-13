@@ -48,6 +48,16 @@
     - Top 10 players with the batting average rate in an innings in tests.
 
 
+## Database Handling, Data storation & extraction
+
+*Database created using sqlite.*
+
+- test_cricket_records table schema set.
+- Data stored in database.
+- Fetched the data, formatted it accordingly and w.r.t to the columns from dataframe.
+- Data rendered in html file after fetching from db.
+
+
 
 
 
