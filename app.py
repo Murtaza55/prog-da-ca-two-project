@@ -68,4 +68,8 @@ def home_page():
     return render_template('index.html', rows=rows, cols=cols)
 
 if __name__ == "__main__":
- app.run(host='0.0.0.0', port='8080') # indent this line
+    #port for local server
+    app.run(port=5000, debug=True)
+
+    #port for flask server
+    # app.run(host='0.0.0.0', port='8080') # indent this line

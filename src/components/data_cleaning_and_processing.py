@@ -103,15 +103,15 @@ df = df.astype({'4s':'int', '6s':'int','Start_Year':'int', 'Final_Year':'int'})
 
 # print(df.dtypes)
 
- # saving the cleaned data in a csv file
-df.to_csv('cleaned_test_records_data.csv', index=False)
-
-print("Data saved to", 'cleaned_test_records_data.csv')
-
 #====Calculating each players career length and add it as a new column=====
 df['Career_Length'] = df['Final_Year'] - df['Start_Year']
 
 # print(df['Career_Length'])
+
+ # saving the cleaned data in a csv file
+df.to_csv('cleaned_test_records_data.csv', index=False)
+
+print("Data saved to", 'cleaned_test_records_data.csv')
 
 #====Calculations with the dataframe after adding new columns=====
 
