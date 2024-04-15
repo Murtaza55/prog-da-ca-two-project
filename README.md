@@ -10,6 +10,10 @@
 - Creating requirements.txt to list down all the required packages and install them all at once.
 - Structuring the project, creating src folder for development.
 
+## Data Acquisition 
+
+- Source: https://www.espncricinfo.com/records/highest-career-batting-average-282910
+
 ## Web Scraping
 
 - Worked on web scraping the Cricket Test Matches Records from ESPN Cric info website.
@@ -56,6 +60,25 @@
 - Data stored in database.
 - Fetched the data, formatted it accordingly and w.r.t to the columns from dataframe.
 - Data rendered in html file after fetching from db.
+
+## Data Analysis on the Data:
+
+*Applied Data Analysis on calculated data after storing in db*
+
+- Stored the calculated stats data to database.
+- Fetched the data from db according to the needs and applied data analysis by adding some graphs using plotly lib, then rendered those graphs in separate htmls.
+- Setup routes for those html files and integrated them using an iframe in the main analysis html file.
+
+## Project Deployment
+
+- Setup a Virtual Machine instance on Google Cloud.
+- Accessed it via external IP.
+- Created a venv.
+- Installed and setup flask on it.
+- Cloned the project git repository.
+- Installed all the dependencies from requirements.txt file.
+- Ran the server on 8080 port.
+- Project is up and running at : http://35.228.61.232:8080/
 
 
 
