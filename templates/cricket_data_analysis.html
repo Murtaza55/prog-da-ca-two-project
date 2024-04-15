@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cricket Data Analysis</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+</head>
+<body>
+
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">Programming for Data Analysis</a>
+            </div>
+            <ul class="nav navbar-nav">
+                <li><a href="/">Home</a></li>
+                <li><a href="/data_fetched_from_db">Data Fetched From DB</a></li>
+                <li class="active"><a href="/test_records_analysis">Data Analysis on Test Matches Records </a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div style="margin: 5rem;">
+        <h1>Top 10 Players with Highest Scores in Test</h1>
+        <iframe src="/render_top_scorer_graph" width="1300" height="600"></iframe>
+
+        <h1>Top 10 Players with Highest Batting Averages in Test</h1>
+        <iframe src="render_batting_averages_graph" width="1300" height="600"></iframe>
+
+        <h1>Top 10 Players with Highest Strike Rates in Test</h1>
+        <iframe src="render_strike_rates_graph" width="1300" height="600"></iframe>
+    </div>
+
+</body>
+</html>
